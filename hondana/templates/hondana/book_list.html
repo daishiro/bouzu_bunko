@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}List{% endblock title %}
+
+{% block extrahead %}
+    <style>
+        table {
+            margin-top: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">ぼうず文庫</h3>
+    <a href="{% url 'hondana:book_add' %}" class="btn btn-default btn-sm">Add</a>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>isbn_code</th>
+                <th>title</th>
+                <th>publisher</th>
+                <th>author</th>
+                <th>translator</th>
+                <th>release_date</th>
+                <th>revision_date</th>
+                <th>func</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.isbn_code }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.translator }}</td>
+                <td>{{ book.release_date }}</td>
+                <td>{{ book.revision_date }}</td>
+                <td>
+                    <a href="{% url 'hondana:book_mod' book_id=book.id %}" class="btn btn-default btn-sm">Mod</a>
+                    <a href="{% url 'hondana:book_del' book_id=book.id %}" class="btn btn-default btn-sm">Del</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
