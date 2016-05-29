@@ -2,3 +2,4 @@ py351
 *.pyc
 staticfiles
 .idea/
+*.sqlite3
