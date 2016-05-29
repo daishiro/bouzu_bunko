@@ -19,5 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^auth_ctrl/login', 'django.contrib.auth.views.login', {'template_name': 'auth_ctrl/login.html'}),
+    url(r'^auth_ctrl/logout', 'django.contrib.auth.views.logout', {'template_name': 'auth_ctrl/logout.html'}),
     url(r'^hondana/', include('hondana.urls', namespace='hondana')),
 ]
